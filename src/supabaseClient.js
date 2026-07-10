@@ -244,7 +244,7 @@ export const db = {
 // ============================================================
 function subscribeToTable(table, leagueId, callback) {
   const channel = supabase
-    .channel(`${table}:${leagueId}`)
+    .channel(`${table}:${leagueId}:${crypto.randomUUID()}`)
     .on(
       'postgres_changes',
       { event: '*', schema: 'public', table, filter: `league_id=eq.${leagueId}` },
@@ -266,7 +266,7 @@ export const realtime = {
   },
   subscribeToLeague(leagueId, callback) {
     const channel = supabase
-      .channel(`leagues:${leagueId}`)
+      .channel(`leagues:${leagueId}:${crypto.randomUUID()}`)
       .on(
         'postgres_changes',
         { event: 'UPDATE', schema: 'public', table: 'leagues', filter: `id=eq.${leagueId}` },

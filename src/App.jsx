@@ -6,6 +6,7 @@ import LeagueGate from './components/LeagueGate';
 import LeagueShell from './components/LeagueShell';
 import ReadyTracker from './components/ReadyTracker';
 import Schedule from './components/Schedule';
+import Teams from './components/Teams';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -58,6 +59,13 @@ export default function App() {
           <p className="loading-text">Loading teams…</p>
         ) : (
           <>
+            <Teams
+              league={league}
+              teams={teams}
+              currentUser={user}
+              myTeam={myTeam}
+              isCommissioner={isCommissioner}
+            />
             <ReadyTracker
               league={league}
               teams={teams}

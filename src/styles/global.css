@@ -184,6 +184,10 @@ a {
   overflow: hidden;
 }
 
+.panel--full-width {
+  grid-column: 1 / -1;
+}
+
 .panel__header {
   padding: 16px 20px;
   display: flex;
@@ -350,6 +354,53 @@ a {
     opacity: 0.92;
     transform: rotate(var(--stamp-rotation, -4deg)) scale(1);
   }
+}
+
+.team-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.team-roster__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(154, 163, 181, 0.35);
+  border-radius: var(--radius);
+}
+
+.team-roster__name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.95rem;
+}
+
+.team-roster__abbr {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--chalk-dim);
+  margin-left: 8px;
+}
+
+.team-roster__owned-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+}
+
+.team-add-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin-top: 8px;
 }
 
 /* ---------- Schedule panel (parchment, program insert) ---------- */
