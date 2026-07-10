@@ -1,0 +1,830 @@
+[
+  {
+    "school": "Alabama",
+    "nickname": "Crimson Tide",
+    "conference": "SEC",
+    "prestige": 5
+  },
+  {
+    "school": "Georgia",
+    "nickname": "Bulldogs",
+    "conference": "SEC",
+    "prestige": 5
+  },
+  {
+    "school": "Ohio State",
+    "nickname": "Buckeyes",
+    "conference": "Big Ten",
+    "prestige": 5
+  },
+  {
+    "school": "Oklahoma",
+    "nickname": "Sooners",
+    "conference": "SEC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Texas A&M",
+    "nickname": "Aggies",
+    "conference": "SEC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Michigan",
+    "nickname": "Wolverines",
+    "conference": "Big Ten",
+    "prestige": 4.5
+  },
+  {
+    "school": "Texas",
+    "nickname": "Longhorns",
+    "conference": "SEC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Oregon",
+    "nickname": "Ducks",
+    "conference": "Big Ten",
+    "prestige": 4.5
+  },
+  {
+    "school": "LSU",
+    "nickname": "Tigers",
+    "conference": "SEC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Miami (FL)",
+    "nickname": "Hurricanes",
+    "conference": "ACC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Ole Miss",
+    "nickname": "Rebels",
+    "conference": "SEC",
+    "prestige": 4.5
+  },
+  {
+    "school": "Notre Dame",
+    "nickname": "Fighting Irish",
+    "conference": "Independent",
+    "prestige": 4.5
+  },
+  {
+    "school": "USC",
+    "nickname": "Trojans",
+    "conference": "Big Ten",
+    "prestige": 4.5
+  },
+  {
+    "school": "Indiana",
+    "nickname": "Hoosiers",
+    "conference": "Big Ten",
+    "prestige": 4.5
+  },
+  {
+    "school": "Clemson",
+    "nickname": "Tigers",
+    "conference": "ACC",
+    "prestige": 4
+  },
+  {
+    "school": "Penn State",
+    "nickname": "Nittany Lions",
+    "conference": "Big Ten",
+    "prestige": 4
+  },
+  {
+    "school": "Tennessee",
+    "nickname": "Volunteers",
+    "conference": "SEC",
+    "prestige": 4
+  },
+  {
+    "school": "Washington",
+    "nickname": "Huskies",
+    "conference": "Big Ten",
+    "prestige": 4
+  },
+  {
+    "school": "Iowa",
+    "nickname": "Hawkeyes",
+    "conference": "Big Ten",
+    "prestige": 4
+  },
+  {
+    "school": "Nebraska",
+    "nickname": "Cornhuskers",
+    "conference": "Big Ten",
+    "prestige": 4
+  },
+  {
+    "school": "BYU",
+    "nickname": "Cougars",
+    "conference": "Big 12",
+    "prestige": 4
+  },
+  {
+    "school": "Auburn",
+    "nickname": "Tigers",
+    "conference": "SEC",
+    "prestige": 3.5
+  },
+  {
+    "school": "Florida",
+    "nickname": "Gators",
+    "conference": "SEC",
+    "prestige": 3.5
+  },
+  {
+    "school": "Florida State",
+    "nickname": "Seminoles",
+    "conference": "ACC",
+    "prestige": 3.5
+  },
+  {
+    "school": "TCU",
+    "nickname": "Horned Frogs",
+    "conference": "Big 12",
+    "prestige": 3.5
+  },
+  {
+    "school": "Georgia Tech",
+    "nickname": "Yellow Jackets",
+    "conference": "ACC",
+    "prestige": 3.5
+  },
+  {
+    "school": "UCLA",
+    "nickname": "Bruins",
+    "conference": "Big Ten",
+    "prestige": 3.5
+  },
+  {
+    "school": "Michigan State",
+    "nickname": "Spartans",
+    "conference": "Big Ten",
+    "prestige": 3.5
+  },
+  {
+    "school": "Texas Tech",
+    "nickname": "Red Raiders",
+    "conference": "Big 12",
+    "prestige": 3.5
+  },
+  {
+    "school": "Utah",
+    "nickname": "Utes",
+    "conference": "Big 12",
+    "prestige": 3.5
+  },
+  {
+    "school": "Minnesota",
+    "nickname": "Golden Gophers",
+    "conference": "Big Ten",
+    "prestige": 3.5
+  },
+  {
+    "school": "Illinois",
+    "nickname": "Fighting Illini",
+    "conference": "Big Ten",
+    "prestige": 3.5
+  },
+  {
+    "school": "South Carolina",
+    "nickname": "Gamecocks",
+    "conference": "SEC",
+    "prestige": 3
+  },
+  {
+    "school": "NC State",
+    "nickname": "Wolfpack",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Kentucky",
+    "nickname": "Wildcats",
+    "conference": "SEC",
+    "prestige": 3
+  },
+  {
+    "school": "Arkansas",
+    "nickname": "Razorbacks",
+    "conference": "SEC",
+    "prestige": 3
+  },
+  {
+    "school": "Missouri",
+    "nickname": "Tigers",
+    "conference": "SEC",
+    "prestige": 3
+  },
+  {
+    "school": "California",
+    "nickname": "Golden Bears",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Arizona State",
+    "nickname": "Sun Devils",
+    "conference": "Big 12",
+    "prestige": 3
+  },
+  {
+    "school": "Wisconsin",
+    "nickname": "Badgers",
+    "conference": "Big Ten",
+    "prestige": 3
+  },
+  {
+    "school": "Stanford",
+    "nickname": "Cardinal",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Oklahoma State",
+    "nickname": "Cowboys",
+    "conference": "Big 12",
+    "prestige": 3
+  },
+  {
+    "school": "Virginia Tech",
+    "nickname": "Hokies",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Pittsburgh",
+    "nickname": "Panthers",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Syracuse",
+    "nickname": "Orange",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Louisville",
+    "nickname": "Cardinals",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Virginia",
+    "nickname": "Cavaliers",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "SMU",
+    "nickname": "Mustangs",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Colorado",
+    "nickname": "Buffaloes",
+    "conference": "Big 12",
+    "prestige": 3
+  },
+  {
+    "school": "Duke",
+    "nickname": "Blue Devils",
+    "conference": "ACC",
+    "prestige": 3
+  },
+  {
+    "school": "Houston",
+    "nickname": "Cougars",
+    "conference": "Big 12",
+    "prestige": 3
+  },
+  {
+    "school": "Army",
+    "nickname": "Black Knights",
+    "conference": "American",
+    "prestige": 3
+  },
+  {
+    "school": "North Carolina",
+    "nickname": "Tar Heels",
+    "conference": "ACC",
+    "prestige": 2.5
+  },
+  {
+    "school": "Mississippi State",
+    "nickname": "Bulldogs",
+    "conference": "SEC",
+    "prestige": 2.5
+  },
+  {
+    "school": "Cincinnati",
+    "nickname": "Bearcats",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Maryland",
+    "nickname": "Terrapins",
+    "conference": "Big Ten",
+    "prestige": 2.5
+  },
+  {
+    "school": "Baylor",
+    "nickname": "Bears",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Boston College",
+    "nickname": "Eagles",
+    "conference": "ACC",
+    "prestige": 2.5
+  },
+  {
+    "school": "Vanderbilt",
+    "nickname": "Commodores",
+    "conference": "SEC",
+    "prestige": 2.5
+  },
+  {
+    "school": "Arizona",
+    "nickname": "Wildcats",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Northwestern",
+    "nickname": "Wildcats",
+    "conference": "Big Ten",
+    "prestige": 2.5
+  },
+  {
+    "school": "Iowa State",
+    "nickname": "Cyclones",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "UCF",
+    "nickname": "Knights",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Tulane",
+    "nickname": "Green Wave",
+    "conference": "American",
+    "prestige": 2.5
+  },
+  {
+    "school": "West Virginia",
+    "nickname": "Mountaineers",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Boise State",
+    "nickname": "Broncos",
+    "conference": "Mountain West",
+    "prestige": 2.5
+  },
+  {
+    "school": "Kansas State",
+    "nickname": "Wildcats",
+    "conference": "Big 12",
+    "prestige": 2.5
+  },
+  {
+    "school": "Navy",
+    "nickname": "Midshipmen",
+    "conference": "American",
+    "prestige": 2.5
+  },
+  {
+    "school": "Rutgers",
+    "nickname": "Scarlet Knights",
+    "conference": "Big Ten",
+    "prestige": 2
+  },
+  {
+    "school": "Purdue",
+    "nickname": "Boilermakers",
+    "conference": "Big Ten",
+    "prestige": 2
+  },
+  {
+    "school": "Wake Forest",
+    "nickname": "Demon Deacons",
+    "conference": "ACC",
+    "prestige": 2
+  },
+  {
+    "school": "Memphis",
+    "nickname": "Tigers",
+    "conference": "American",
+    "prestige": 2
+  },
+  {
+    "school": "Washington State",
+    "nickname": "Cougars",
+    "conference": "Pac-12",
+    "prestige": 2
+  },
+  {
+    "school": "East Carolina",
+    "nickname": "Pirates",
+    "conference": "American",
+    "prestige": 2
+  },
+  {
+    "school": "Oregon State",
+    "nickname": "Beavers",
+    "conference": "Pac-12",
+    "prestige": 2
+  },
+  {
+    "school": "Kansas",
+    "nickname": "Jayhawks",
+    "conference": "Big 12",
+    "prestige": 2
+  },
+  {
+    "school": "South Florida",
+    "nickname": "Bulls",
+    "conference": "American",
+    "prestige": 1.5
+  },
+  {
+    "school": "North Texas",
+    "nickname": "Mean Green",
+    "conference": "American",
+    "prestige": 1.5
+  },
+  {
+    "school": "Rice",
+    "nickname": "Owls",
+    "conference": "American",
+    "prestige": 1.5
+  },
+  {
+    "school": "Air Force",
+    "nickname": "Falcons",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "Western Kentucky",
+    "nickname": "Hilltoppers",
+    "conference": "CUSA",
+    "prestige": 1.5
+  },
+  {
+    "school": "Fresno State",
+    "nickname": "Bulldogs",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "UNLV",
+    "nickname": "Rebels",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "Colorado State",
+    "nickname": "Rams",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "San Jose State",
+    "nickname": "Spartans",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "Tulsa",
+    "nickname": "Golden Hurricane",
+    "conference": "American",
+    "prestige": 1.5
+  },
+  {
+    "school": "Utah State",
+    "nickname": "Aggies",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "UConn",
+    "nickname": "Huskies",
+    "conference": "Independent",
+    "prestige": 1.5
+  },
+  {
+    "school": "UTSA",
+    "nickname": "Roadrunners",
+    "conference": "American",
+    "prestige": 1.5
+  },
+  {
+    "school": "Hawaii",
+    "nickname": "Rainbow Warriors",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "James Madison",
+    "nickname": "Dukes",
+    "conference": "Sun Belt",
+    "prestige": 1.5
+  },
+  {
+    "school": "North Dakota State",
+    "nickname": "Bison",
+    "conference": "Mountain West",
+    "prestige": 1.5
+  },
+  {
+    "school": "Louisiana",
+    "nickname": "Ragin Cajuns",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Louisiana Tech",
+    "nickname": "Bulldogs",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Western Michigan",
+    "nickname": "Broncos",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "Old Dominion",
+    "nickname": "Monarchs",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "San Diego State",
+    "nickname": "Aztecs",
+    "conference": "Mountain West",
+    "prestige": 1
+  },
+  {
+    "school": "Miami (OH)",
+    "nickname": "RedHawks",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "Temple",
+    "nickname": "Owls",
+    "conference": "American",
+    "prestige": 1
+  },
+  {
+    "school": "Appalachian State",
+    "nickname": "Mountaineers",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Arkansas State",
+    "nickname": "Red Wolves",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Georgia Southern",
+    "nickname": "Eagles",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Central Michigan",
+    "nickname": "Chippewas",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "Florida Atlantic",
+    "nickname": "Owls",
+    "conference": "American",
+    "prestige": 1
+  },
+  {
+    "school": "Marshall",
+    "nickname": "Thundering Herd",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Toledo",
+    "nickname": "Rockets",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "Nevada",
+    "nickname": "Wolf Pack",
+    "conference": "Mountain West",
+    "prestige": 1
+  },
+  {
+    "school": "FIU",
+    "nickname": "Panthers",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "UAB",
+    "nickname": "Blazers",
+    "conference": "American",
+    "prestige": 1
+  },
+  {
+    "school": "Texas State",
+    "nickname": "Bobcats",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "New Mexico State",
+    "nickname": "Aggies",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Wyoming",
+    "nickname": "Cowboys",
+    "conference": "Mountain West",
+    "prestige": 1
+  },
+  {
+    "school": "Coastal Carolina",
+    "nickname": "Chanticleers",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Liberty",
+    "nickname": "Flames",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Ohio",
+    "nickname": "Bobcats",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "UTEP",
+    "nickname": "Miners",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "New Mexico",
+    "nickname": "Lobos",
+    "conference": "Mountain West",
+    "prestige": 1
+  },
+  {
+    "school": "Troy",
+    "nickname": "Trojans",
+    "conference": "Sun Belt",
+    "prestige": 1
+  },
+  {
+    "school": "Jacksonville State",
+    "nickname": "Gamecocks",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Kennesaw State",
+    "nickname": "Owls",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Sacramento State",
+    "nickname": "Hornets",
+    "conference": "MAC",
+    "prestige": 1
+  },
+  {
+    "school": "Delaware",
+    "nickname": "Fightin Blue Hens",
+    "conference": "CUSA",
+    "prestige": 1
+  },
+  {
+    "school": "Southern Miss",
+    "nickname": "Golden Eagles",
+    "conference": "Sun Belt",
+    "prestige": 0.5
+  },
+  {
+    "school": "Ball State",
+    "nickname": "Cardinals",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "Charlotte",
+    "nickname": "49ers",
+    "conference": "American",
+    "prestige": 0.5
+  },
+  {
+    "school": "Middle Tennessee",
+    "nickname": "Blue Raiders",
+    "conference": "CUSA",
+    "prestige": 0.5
+  },
+  {
+    "school": "Bowling Green",
+    "nickname": "Falcons",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "South Alabama",
+    "nickname": "Jaguars",
+    "conference": "Sun Belt",
+    "prestige": 0.5
+  },
+  {
+    "school": "Northern Illinois",
+    "nickname": "Huskies",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "UMass",
+    "nickname": "Minutemen",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "Buffalo",
+    "nickname": "Bulls",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "Eastern Michigan",
+    "nickname": "Eagles",
+    "conference": "MAC",
+    "prestige": 0.5
+  },
+  {
+    "school": "Sam Houston",
+    "nickname": "Bearkats",
+    "conference": "CUSA",
+    "prestige": 0.5
+  },
+  {
+    "school": "Missouri State",
+    "nickname": "Bears",
+    "conference": "CUSA",
+    "prestige": 0.5
+  },
+  {
+    "school": "Georgia State",
+    "nickname": "Panthers",
+    "conference": "Sun Belt",
+    "prestige": null
+  },
+  {
+    "school": "Kent State",
+    "nickname": "Golden Flashes",
+    "conference": "MAC",
+    "prestige": null
+  },
+  {
+    "school": "Akron",
+    "nickname": "Zips",
+    "conference": "MAC",
+    "prestige": null
+  },
+  {
+    "school": "UL-Monroe",
+    "nickname": "Warhawks",
+    "conference": "Sun Belt",
+    "prestige": null
+  }
+]

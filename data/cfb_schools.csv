@@ -1,0 +1,139 @@
+school,nickname,conference,prestige
+"Alabama","Crimson Tide","SEC",5
+"Georgia","Bulldogs","SEC",5
+"Ohio State","Buckeyes","Big Ten",5
+"Oklahoma","Sooners","SEC",4.5
+"Texas A&M","Aggies","SEC",4.5
+"Michigan","Wolverines","Big Ten",4.5
+"Texas","Longhorns","SEC",4.5
+"Oregon","Ducks","Big Ten",4.5
+"LSU","Tigers","SEC",4.5
+"Miami (FL)","Hurricanes","ACC",4.5
+"Ole Miss","Rebels","SEC",4.5
+"Notre Dame","Fighting Irish","Independent",4.5
+"USC","Trojans","Big Ten",4.5
+"Indiana","Hoosiers","Big Ten",4.5
+"Clemson","Tigers","ACC",4
+"Penn State","Nittany Lions","Big Ten",4
+"Tennessee","Volunteers","SEC",4
+"Washington","Huskies","Big Ten",4
+"Iowa","Hawkeyes","Big Ten",4
+"Nebraska","Cornhuskers","Big Ten",4
+"BYU","Cougars","Big 12",4
+"Auburn","Tigers","SEC",3.5
+"Florida","Gators","SEC",3.5
+"Florida State","Seminoles","ACC",3.5
+"TCU","Horned Frogs","Big 12",3.5
+"Georgia Tech","Yellow Jackets","ACC",3.5
+"UCLA","Bruins","Big Ten",3.5
+"Michigan State","Spartans","Big Ten",3.5
+"Texas Tech","Red Raiders","Big 12",3.5
+"Utah","Utes","Big 12",3.5
+"Minnesota","Golden Gophers","Big Ten",3.5
+"Illinois","Fighting Illini","Big Ten",3.5
+"South Carolina","Gamecocks","SEC",3
+"NC State","Wolfpack","ACC",3
+"Kentucky","Wildcats","SEC",3
+"Arkansas","Razorbacks","SEC",3
+"Missouri","Tigers","SEC",3
+"California","Golden Bears","ACC",3
+"Arizona State","Sun Devils","Big 12",3
+"Wisconsin","Badgers","Big Ten",3
+"Stanford","Cardinal","ACC",3
+"Oklahoma State","Cowboys","Big 12",3
+"Virginia Tech","Hokies","ACC",3
+"Pittsburgh","Panthers","ACC",3
+"Syracuse","Orange","ACC",3
+"Louisville","Cardinals","ACC",3
+"Virginia","Cavaliers","ACC",3
+"SMU","Mustangs","ACC",3
+"Colorado","Buffaloes","Big 12",3
+"Duke","Blue Devils","ACC",3
+"Houston","Cougars","Big 12",3
+"Army","Black Knights","American",3
+"North Carolina","Tar Heels","ACC",2.5
+"Mississippi State","Bulldogs","SEC",2.5
+"Cincinnati","Bearcats","Big 12",2.5
+"Maryland","Terrapins","Big Ten",2.5
+"Baylor","Bears","Big 12",2.5
+"Boston College","Eagles","ACC",2.5
+"Vanderbilt","Commodores","SEC",2.5
+"Arizona","Wildcats","Big 12",2.5
+"Northwestern","Wildcats","Big Ten",2.5
+"Iowa State","Cyclones","Big 12",2.5
+"UCF","Knights","Big 12",2.5
+"Tulane","Green Wave","American",2.5
+"West Virginia","Mountaineers","Big 12",2.5
+"Boise State","Broncos","Mountain West",2.5
+"Kansas State","Wildcats","Big 12",2.5
+"Navy","Midshipmen","American",2.5
+"Rutgers","Scarlet Knights","Big Ten",2
+"Purdue","Boilermakers","Big Ten",2
+"Wake Forest","Demon Deacons","ACC",2
+"Memphis","Tigers","American",2
+"Washington State","Cougars","Pac-12",2
+"East Carolina","Pirates","American",2
+"Oregon State","Beavers","Pac-12",2
+"Kansas","Jayhawks","Big 12",2
+"South Florida","Bulls","American",1.5
+"North Texas","Mean Green","American",1.5
+"Rice","Owls","American",1.5
+"Air Force","Falcons","Mountain West",1.5
+"Western Kentucky","Hilltoppers","CUSA",1.5
+"Fresno State","Bulldogs","Mountain West",1.5
+"UNLV","Rebels","Mountain West",1.5
+"Colorado State","Rams","Mountain West",1.5
+"San Jose State","Spartans","Mountain West",1.5
+"Tulsa","Golden Hurricane","American",1.5
+"Utah State","Aggies","Mountain West",1.5
+"UConn","Huskies","Independent",1.5
+"UTSA","Roadrunners","American",1.5
+"Hawaii","Rainbow Warriors","Mountain West",1.5
+"James Madison","Dukes","Sun Belt",1.5
+"North Dakota State","Bison","Mountain West",1.5
+"Louisiana","Ragin Cajuns","Sun Belt",1
+"Louisiana Tech","Bulldogs","CUSA",1
+"Western Michigan","Broncos","MAC",1
+"Old Dominion","Monarchs","Sun Belt",1
+"San Diego State","Aztecs","Mountain West",1
+"Miami (OH)","RedHawks","MAC",1
+"Temple","Owls","American",1
+"Appalachian State","Mountaineers","Sun Belt",1
+"Arkansas State","Red Wolves","Sun Belt",1
+"Georgia Southern","Eagles","Sun Belt",1
+"Central Michigan","Chippewas","MAC",1
+"Florida Atlantic","Owls","American",1
+"Marshall","Thundering Herd","Sun Belt",1
+"Toledo","Rockets","MAC",1
+"Nevada","Wolf Pack","Mountain West",1
+"FIU","Panthers","CUSA",1
+"UAB","Blazers","American",1
+"Texas State","Bobcats","Sun Belt",1
+"New Mexico State","Aggies","CUSA",1
+"Wyoming","Cowboys","Mountain West",1
+"Coastal Carolina","Chanticleers","Sun Belt",1
+"Liberty","Flames","CUSA",1
+"Ohio","Bobcats","MAC",1
+"UTEP","Miners","CUSA",1
+"New Mexico","Lobos","Mountain West",1
+"Troy","Trojans","Sun Belt",1
+"Jacksonville State","Gamecocks","CUSA",1
+"Kennesaw State","Owls","CUSA",1
+"Sacramento State","Hornets","MAC",1
+"Delaware","Fightin Blue Hens","CUSA",1
+"Southern Miss","Golden Eagles","Sun Belt",0.5
+"Ball State","Cardinals","MAC",0.5
+"Charlotte","49ers","American",0.5
+"Middle Tennessee","Blue Raiders","CUSA",0.5
+"Bowling Green","Falcons","MAC",0.5
+"South Alabama","Jaguars","Sun Belt",0.5
+"Northern Illinois","Huskies","MAC",0.5
+"UMass","Minutemen","MAC",0.5
+"Buffalo","Bulls","MAC",0.5
+"Eastern Michigan","Eagles","MAC",0.5
+"Sam Houston","Bearkats","CUSA",0.5
+"Missouri State","Bears","CUSA",0.5
+"Georgia State","Panthers","Sun Belt",
+"Kent State","Golden Flashes","MAC",
+"Akron","Zips","MAC",
+"UL-Monroe","Warhawks","Sun Belt",
