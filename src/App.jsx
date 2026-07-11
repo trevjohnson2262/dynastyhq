@@ -6,6 +6,7 @@ import LeagueGate from './components/LeagueGate';
 import LeagueShell from './components/LeagueShell';
 import ReadyTracker from './components/ReadyTracker';
 import Schedule from './components/Schedule';
+import Standings from './components/Standings';
 import Teams from './components/Teams';
 import RecruitingBoard from './components/RecruitingBoard';
 import NewsFeed from './components/NewsFeed';
@@ -84,6 +85,7 @@ export default function App() {
               onLeagueUpdate={setLeague}
             />
             <Schedule league={league} teams={teams} isCommissioner={isCommissioner} />
+            <Standings league={league} teams={teams} />
             <RecruitingBoard league={league} teams={teams} isCommissioner={isCommissioner} />
             <NewsFeed league={league} currentUser={user} isCommissioner={isCommissioner} />
             <Timeline league={league} isCommissioner={isCommissioner} />

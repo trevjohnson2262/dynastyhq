@@ -397,6 +397,42 @@ a {
   margin-left: 10px;
 }
 
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.standings-table th {
+  text-align: right;
+  padding: 6px 8px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+}
+
+.standings-table th:first-child,
+.standings-table td:first-child {
+  text-align: left;
+}
+
+.standings-table td {
+  padding: 8px;
+  text-align: right;
+  border-bottom: 1px solid rgba(154, 163, 181, 0.2);
+}
+
+.standings-table__team {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.88rem;
+  color: var(--white);
+}
+
 .team-roster__owned-label {
   font-family: var(--font-mono);
   font-size: 0.72rem;
