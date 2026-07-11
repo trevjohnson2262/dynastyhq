@@ -737,6 +737,19 @@ a {
   font-size: 0.7rem;
 }
 
+/* Larger tap targets on touch-sized screens — the compact
+   desktop padding above is too small to reliably tap. */
+@media (max-width: 640px) {
+  .btn {
+    min-height: 44px;
+  }
+
+  .btn--small {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+}
+
 /* ============================================================
    Auth / gate screens
    ============================================================ */
