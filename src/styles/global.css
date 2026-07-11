@@ -600,6 +600,48 @@ a {
   }
 }
 
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.timeline-event {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+}
+
+.timeline-event__marker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--field-green-deep);
+  font-weight: 600;
+  min-width: 44px;
+}
+
+.timeline-event__body {
+  flex: 1;
+}
+
+.timeline-event__type {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  color: #6b6350;
+}
+
+.timeline-event__description {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+}
+
 .schedule-add-form {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr 1.3fr auto;

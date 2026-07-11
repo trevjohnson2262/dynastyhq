@@ -288,6 +288,34 @@ export const db = {
     },
   },
 
+  timelineEvents: {
+    async list(leagueId) {
+      const { data, error } = await supabase
+        .from('timeline_events')
+        .select('*')
+        .eq('league_id', leagueId)
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+
+    async create({ league_id, week, event_type, description }) {
+      const { data, error } = await supabase
+        .from('timeline_events')
+        .insert({ league_id, week, event_type, description })
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async remove(id) {
+      const { error } = await supabase.from('timeline_events').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    },
+  },
+
   newsItems: {
     async list(leagueId) {
       const { data, error } = await supabase
@@ -344,6 +372,9 @@ export const realtime = {
   },
   subscribeToNews(leagueId, callback) {
     return subscribeToTable('news_items', leagueId, callback);
+  },
+  subscribeToTimeline(leagueId, callback) {
+    return subscribeToTable('timeline_events', leagueId, callback);
   },
   subscribeToLeague(leagueId, callback) {
     const channel = supabase
