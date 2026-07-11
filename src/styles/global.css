@@ -625,6 +625,11 @@ a {
   color: #2a2620;
 }
 
+.roster-select option {
+  color: #2a2620;
+  background: var(--white);
+}
+
 .schedule-week {
   margin-bottom: 16px;
 }
