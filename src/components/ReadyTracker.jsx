@@ -17,6 +17,7 @@ function perspective(matchup, teamId) {
   const iAmHome = matchup.home_team_id === teamId;
   return {
     opponentTeamId: iAmHome ? matchup.away_team_id : matchup.home_team_id,
+    opponentSchool: iAmHome ? matchup.away_opponent_school : matchup.home_opponent_school,
     myScore: iAmHome ? matchup.home_score : matchup.away_score,
     oppScore: iAmHome ? matchup.away_score : matchup.home_score,
     isHome: iAmHome,
@@ -71,8 +72,8 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
   const matchupByTeam = useMemo(() => {
     const map = {};
     matchups.forEach((m) => {
-      map[m.home_team_id] = m;
-      map[m.away_team_id] = m;
+      if (m.home_team_id) map[m.home_team_id] = m;
+      if (m.away_team_id) map[m.away_team_id] = m;
     });
     return map;
   }, [matchups]);
@@ -156,8 +157,8 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
                   <span className="team-slot__opponent">
                     {matchup
                       ? matchup.status === 'final'
-                        ? `${p.myScore >= p.oppScore ? 'W' : 'L'} vs ${teamName[p.opponentTeamId] || 'Unknown'} · ${p.myScore}–${p.oppScore}`
-                        : `vs ${teamName[p.opponentTeamId] || 'Unknown'}`
+                        ? `${p.myScore >= p.oppScore ? 'W' : 'L'} vs ${teamName[p.opponentTeamId] || p.opponentSchool || 'Unknown'} · ${p.myScore}–${p.oppScore}`
+                        : `vs ${teamName[p.opponentTeamId] || p.opponentSchool || 'Unknown'}`
                       : 'Bye week'}
                   </span>
                 </div>
@@ -185,7 +186,7 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
             {myMatchup.status === 'final' ? (
               <div className="score-report__done">
                 Result reported: {myPerspective.myScore}–{myPerspective.oppScore} vs{' '}
-                {teamName[myPerspective.opponentTeamId] || 'Unknown'}.{' '}
+                {teamName[myPerspective.opponentTeamId] || myPerspective.opponentSchool || 'Unknown'}.{' '}
                 <button
                   className="btn btn--ghost btn--small"
                   onClick={() =>
@@ -204,7 +205,7 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
                 className="btn btn--field btn--small"
                 onClick={() => setScoreForm({ open: true, mine: '', opp: '' })}
               >
-                Report result vs {teamName[myPerspective.opponentTeamId] || 'opponent'}
+                Report result vs {teamName[myPerspective.opponentTeamId] || myPerspective.opponentSchool || 'opponent'}
               </button>
             ) : null}
 

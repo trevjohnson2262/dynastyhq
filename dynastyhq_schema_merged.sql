@@ -90,14 +90,22 @@ create table matchups (
   id uuid primary key default uuid_generate_v4(),
   league_id uuid not null references leagues(id) on delete cascade,
   week int not null,
-  home_team_id uuid not null references teams(id) on delete cascade,
-  away_team_id uuid not null references teams(id) on delete cascade,
+  -- Nullable: an opponent can be a league team (home/away_team_id) or a
+  -- non-league CPU school from the full 138-school list, recorded as
+  -- plain text in home/away_opponent_school instead. Exactly one of the
+  -- two must be set per side.
+  home_team_id uuid references teams(id) on delete cascade,
+  away_team_id uuid references teams(id) on delete cascade,
+  home_opponent_school text,
+  away_opponent_school text,
   home_score int,
   away_score int,
   status text not null default 'scheduled' check (status in ('scheduled', 'final')),
   reported_by uuid references auth.users(id) on delete set null,
   created_at timestamptz not null default now(),
-  check (home_team_id <> away_team_id)
+  check (home_team_id <> away_team_id),
+  check (home_team_id is not null or home_opponent_school is not null),
+  check (away_team_id is not null or away_opponent_school is not null)
 );
 
 -- ------------------------------------------------------------

@@ -1,5 +1,55 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { db, realtime } from '../supabaseClient';
+import { SCHOOLS_BY_CONFERENCE, SCHOOL_LOOKUP } from '../lib/schools';
+
+// Select values are prefixed so we can tell a league team apart from a
+// non-league (e.g. CPU) opponent picked from the full 138-school list.
+function encodeTeam(id) {
+  return `team:${id}`;
+}
+function encodeSchool(school) {
+  return `school:${school}`;
+}
+function decodeSide(value) {
+  if (value.startsWith('team:')) {
+    return { team_id: value.slice(5), opponent_school: null };
+  }
+  if (value.startsWith('school:')) {
+    const picked = SCHOOL_LOOKUP.get(value.slice(7));
+    return { team_id: null, opponent_school: picked ? `${picked.school} ${picked.nickname}` : value.slice(7) };
+  }
+  return { team_id: null, opponent_school: null };
+}
+
+function TeamAndSchoolOptions({ teams, usedSchools }) {
+  return (
+    <>
+      {teams.length > 0 && (
+        <optgroup label="League Teams">
+          {teams.map((t) => (
+            <option key={encodeTeam(t.id)} value={encodeTeam(t.id)}>
+              {t.name}
+            </option>
+          ))}
+        </optgroup>
+      )}
+      {SCHOOLS_BY_CONFERENCE.map(([conference, schools]) => (
+        <optgroup key={conference} label={conference}>
+          {schools.map((s) => (
+            <option
+              key={encodeSchool(s.school)}
+              value={encodeSchool(s.school)}
+              disabled={usedSchools.has(s.school)}
+            >
+              {s.school} {s.nickname}
+              {usedSchools.has(s.school) ? ' (a league team — pick it above)' : ''}
+            </option>
+          ))}
+        </optgroup>
+      ))}
+    </>
+  );
+}
 
 export default function Schedule({ league, teams, isCommissioner }) {
   const [matchups, setMatchups] = useState([]);
@@ -14,6 +64,13 @@ export default function Schedule({ league, teams, isCommissioner }) {
     teams.forEach((t) => (map[t.id] = t.name));
     return map;
   }, [teams]);
+
+  const usedSchools = useMemo(() => new Set(teams.map((t) => t.school).filter(Boolean)), [teams]);
+
+  function sideLabel(teamId, opponentSchool) {
+    if (teamId) return teamName[teamId] || 'Unknown';
+    return opponentSchool || 'Unknown';
+  }
 
   const loadMatchups = useCallback(async () => {
     try {
@@ -53,11 +110,15 @@ export default function Schedule({ league, teams, isCommissioner }) {
     }
     setBusy(true);
     try {
+      const home = decodeSide(form.home);
+      const away = decodeSide(form.away);
       await db.matchups.create({
         league_id: league.id,
         week: Number(form.week),
-        home_team_id: form.home,
-        away_team_id: form.away,
+        home_team_id: home.team_id,
+        away_team_id: away.team_id,
+        home_opponent_school: home.opponent_school,
+        away_opponent_school: away.opponent_school,
       });
       setForm({ week: form.week, home: '', away: '' });
       setShowAddForm(false);
@@ -99,7 +160,8 @@ export default function Schedule({ league, teams, isCommissioner }) {
                   {games.map((m) => (
                     <tr key={m.id}>
                       <td className="schedule-table__matchup">
-                        {teamName[m.home_team_id] || 'Unknown'} vs {teamName[m.away_team_id] || 'Unknown'}
+                        {sideLabel(m.home_team_id, m.home_opponent_school)} vs{' '}
+                        {sideLabel(m.away_team_id, m.away_opponent_school)}
                       </td>
                       <td className="schedule-table__score">
                         {m.status === 'final' ? `${m.home_score} – ${m.away_score}` : 'Not yet played'}
@@ -109,7 +171,7 @@ export default function Schedule({ league, teams, isCommissioner }) {
                           <button
                             className="btn btn--ghost btn--small"
                             onClick={() => handleRemove(m.id)}
-                            aria-label={`Remove ${teamName[m.home_team_id]} vs ${teamName[m.away_team_id]} from week ${week}`}
+                            aria-label={`Remove ${sideLabel(m.home_team_id, m.home_opponent_school)} vs ${sideLabel(m.away_team_id, m.away_opponent_school)} from week ${week}`}
                           >
                             Remove
                           </button>
@@ -155,11 +217,7 @@ export default function Schedule({ league, teams, isCommissioner }) {
                     required
                   >
                     <option value="">Select team</option>
-                    {teams.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.name}
-                      </option>
-                    ))}
+                    <TeamAndSchoolOptions teams={teams} usedSchools={usedSchools} />
                   </select>
                 </div>
                 <div>
@@ -173,11 +231,7 @@ export default function Schedule({ league, teams, isCommissioner }) {
                     required
                   >
                     <option value="">Select team</option>
-                    {teams.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.name}
-                      </option>
-                    ))}
+                    <TeamAndSchoolOptions teams={teams} usedSchools={usedSchools} />
                   </select>
                 </div>
                 <button className="btn btn--field btn--small" type="submit" disabled={busy}>

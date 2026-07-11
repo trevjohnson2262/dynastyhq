@@ -30,17 +30,17 @@ export default function Standings({ league, teams }) {
       .forEach((m) => {
         const home = records.get(m.home_team_id);
         const away = records.get(m.away_team_id);
-        if (!home || !away) return;
-        home.pf += m.home_score;
-        home.pa += m.away_score;
-        away.pf += m.away_score;
-        away.pa += m.home_score;
-        if (m.home_score > m.away_score) {
-          home.wins += 1;
-          away.losses += 1;
-        } else if (m.away_score > m.home_score) {
-          away.wins += 1;
-          home.losses += 1;
+        if (home) {
+          home.pf += m.home_score;
+          home.pa += m.away_score;
+          if (m.home_score > m.away_score) home.wins += 1;
+          else if (m.away_score > m.home_score) home.losses += 1;
+        }
+        if (away) {
+          away.pf += m.away_score;
+          away.pa += m.home_score;
+          if (m.away_score > m.home_score) away.wins += 1;
+          else if (m.home_score > m.away_score) away.losses += 1;
         }
       });
 

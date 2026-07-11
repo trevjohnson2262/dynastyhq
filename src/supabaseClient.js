@@ -215,10 +215,24 @@ export const db = {
       return data;
     },
 
-    async create({ league_id, week, home_team_id, away_team_id }) {
+    async create({
+      league_id,
+      week,
+      home_team_id = null,
+      away_team_id = null,
+      home_opponent_school = null,
+      away_opponent_school = null,
+    }) {
       const { data, error } = await supabase
         .from('matchups')
-        .insert({ league_id, week, home_team_id, away_team_id })
+        .insert({
+          league_id,
+          week,
+          home_team_id,
+          away_team_id,
+          home_opponent_school,
+          away_opponent_school,
+        })
         .select()
         .single();
       if (error) throw error;
