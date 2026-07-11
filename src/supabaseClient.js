@@ -287,6 +287,34 @@ export const db = {
       return data;
     },
   },
+
+  newsItems: {
+    async list(leagueId) {
+      const { data, error } = await supabase
+        .from('news_items')
+        .select('*')
+        .eq('league_id', leagueId)
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+
+    async create({ league_id, title, body, week, created_by }) {
+      const { data, error } = await supabase
+        .from('news_items')
+        .insert({ league_id, title, body, week, created_by })
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async remove(id) {
+      const { error } = await supabase.from('news_items').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    },
+  },
 };
 
 // ============================================================
@@ -313,6 +341,9 @@ export const realtime = {
   },
   subscribeToMatchups(leagueId, callback) {
     return subscribeToTable('matchups', leagueId, callback);
+  },
+  subscribeToNews(leagueId, callback) {
+    return subscribeToTable('news_items', leagueId, callback);
   },
   subscribeToLeague(leagueId, callback) {
     const channel = supabase

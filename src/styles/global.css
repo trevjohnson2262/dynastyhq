@@ -403,6 +403,49 @@ a {
   margin-top: 8px;
 }
 
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.news-item {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(154, 163, 181, 0.35);
+  border-radius: var(--radius);
+}
+
+.news-item__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.news-item__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.95rem;
+  color: var(--brass-bright);
+}
+
+.news-item__meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--chalk-dim);
+  white-space: nowrap;
+}
+
+.news-item__body {
+  margin: 8px 0 8px;
+  font-size: 0.88rem;
+  color: var(--chalk);
+  line-height: 1.5;
+}
+
 /* ---------- Schedule panel (parchment, program insert) ---------- */
 
 .panel--schedule {

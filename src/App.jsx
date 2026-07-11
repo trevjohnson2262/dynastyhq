@@ -8,6 +8,7 @@ import ReadyTracker from './components/ReadyTracker';
 import Schedule from './components/Schedule';
 import Teams from './components/Teams';
 import RecruitingBoard from './components/RecruitingBoard';
+import NewsFeed from './components/NewsFeed';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -77,6 +78,7 @@ export default function App() {
             />
             <Schedule league={league} teams={teams} isCommissioner={isCommissioner} />
             <RecruitingBoard league={league} teams={teams} isCommissioner={isCommissioner} />
+            <NewsFeed league={league} currentUser={user} isCommissioner={isCommissioner} />
           </>
         )}
       </div>
