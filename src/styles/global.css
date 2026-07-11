@@ -630,6 +630,12 @@ a {
   background: var(--white);
 }
 
+.roster-select optgroup {
+  color: #2a2620;
+  background: var(--white);
+  font-weight: 700;
+}
+
 .schedule-week {
   margin-bottom: 16px;
 }
