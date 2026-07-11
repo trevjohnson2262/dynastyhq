@@ -483,6 +483,80 @@ a {
   font-size: 0.85rem;
 }
 
+.recruit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.recruit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+}
+
+.recruit-row__name {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.recruit-row__position {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #6b6350;
+  margin-left: 8px;
+}
+
+.recruit-stars {
+  color: var(--brass);
+  margin-left: 10px;
+  letter-spacing: 0.05em;
+}
+
+.recruit-row__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.recruit-row__committed {
+  color: var(--field-green-deep);
+}
+
+.recruit-row__uncommitted {
+  color: #8a8168;
+}
+
+.recruit-row__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.recruit-add-form {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.6fr auto;
+  gap: 8px;
+  align-items: end;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .recruit-add-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .schedule-add-form {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr 1.3fr auto;

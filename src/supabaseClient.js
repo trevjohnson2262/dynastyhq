@@ -207,6 +207,56 @@ export const db = {
     },
   },
 
+  recruits: {
+    async list(leagueId) {
+      const { data, error } = await supabase
+        .from('recruits')
+        .select('*')
+        .eq('league_id', leagueId)
+        .order('stars', { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+
+    async create({ league_id, name, position, stars }) {
+      const { data, error } = await supabase
+        .from('recruits')
+        .insert({ league_id, name, position, stars })
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async commit(recruitId, teamId) {
+      const { data, error } = await supabase
+        .from('recruits')
+        .update({ committed_team_id: teamId, status: 'committed' })
+        .eq('id', recruitId)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async uncommit(recruitId) {
+      const { data, error } = await supabase
+        .from('recruits')
+        .update({ committed_team_id: null, status: 'uncommitted' })
+        .eq('id', recruitId)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async remove(id) {
+      const { error } = await supabase.from('recruits').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    },
+  },
+
   readyStatus: {
     async listForWeek(leagueId, week) {
       const { data, error } = await supabase

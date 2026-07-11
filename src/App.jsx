@@ -7,6 +7,7 @@ import LeagueShell from './components/LeagueShell';
 import ReadyTracker from './components/ReadyTracker';
 import Schedule from './components/Schedule';
 import Teams from './components/Teams';
+import RecruitingBoard from './components/RecruitingBoard';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -75,6 +76,7 @@ export default function App() {
               onLeagueUpdate={setLeague}
             />
             <Schedule league={league} teams={teams} isCommissioner={isCommissioner} />
+            <RecruitingBoard league={league} teams={teams} isCommissioner={isCommissioner} />
           </>
         )}
       </div>
