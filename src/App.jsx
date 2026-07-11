@@ -10,6 +10,7 @@ import Teams from './components/Teams';
 import RecruitingBoard from './components/RecruitingBoard';
 import NewsFeed from './components/NewsFeed';
 import Timeline from './components/Timeline';
+import Announcements from './components/Announcements';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -81,6 +82,7 @@ export default function App() {
             <RecruitingBoard league={league} teams={teams} isCommissioner={isCommissioner} />
             <NewsFeed league={league} currentUser={user} isCommissioner={isCommissioner} />
             <Timeline league={league} isCommissioner={isCommissioner} />
+            <Announcements league={league} currentUser={user} isCommissioner={isCommissioner} />
           </>
         )}
       </div>

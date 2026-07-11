@@ -343,6 +343,46 @@ export const db = {
       return true;
     },
   },
+
+  announcements: {
+    async list(leagueId) {
+      const { data, error } = await supabase
+        .from('announcements')
+        .select('*')
+        .eq('league_id', leagueId)
+        .order('pinned', { ascending: false })
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+
+    async create({ league_id, title, body, created_by }) {
+      const { data, error } = await supabase
+        .from('announcements')
+        .insert({ league_id, title, body, created_by })
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async setPinned(id, pinned) {
+      const { data, error } = await supabase
+        .from('announcements')
+        .update({ pinned })
+        .eq('id', id)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
+
+    async remove(id) {
+      const { error } = await supabase.from('announcements').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    },
+  },
 };
 
 // ============================================================
@@ -375,6 +415,9 @@ export const realtime = {
   },
   subscribeToTimeline(leagueId, callback) {
     return subscribeToTable('timeline_events', leagueId, callback);
+  },
+  subscribeToAnnouncements(leagueId, callback) {
+    return subscribeToTable('announcements', leagueId, callback);
   },
   subscribeToLeague(leagueId, callback) {
     const channel = supabase
