@@ -132,6 +132,10 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
         <h2 className="panel__title">Ready Tracker</h2>
         <span className="panel__subtitle">Week {league.current_week} check-in</span>
       </div>
+      <p className="panel__help-text">
+        Play your games for the week, then stamp ready — once everyone's in, the
+        commissioner advances to the next week.
+      </p>
       <div className="panel__body">
         {loading ? (
           <p className="loading-text">Loading the board…</p>

@@ -211,6 +211,17 @@ a {
   opacity: 0.75;
 }
 
+.panel__help-text {
+  margin: -6px 20px 10px;
+  font-size: 0.78rem;
+  color: var(--chalk-dim);
+  line-height: 1.4;
+}
+
+.panel--schedule .panel__help-text {
+  color: #8a8168;
+}
+
 .panel__body {
   padding: 8px 20px 22px;
 }
@@ -361,6 +372,17 @@ a {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 8px;
+}
+
+.team-claim-nudge {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: var(--radius);
+  color: var(--brass-bright);
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .team-roster__row {
@@ -887,6 +909,13 @@ a {
   letter-spacing: 0.15em;
   margin: 22px 0;
   position: relative;
+}
+
+.gate-help-text {
+  margin: -10px 0 14px;
+  font-size: 0.8rem;
+  color: var(--chalk-dim);
+  line-height: 1.5;
 }
 
 .league-list {

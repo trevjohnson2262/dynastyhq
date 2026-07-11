@@ -80,6 +80,10 @@ export default function LeagueGate({ onSelect }) {
         )}
 
         <div className="divider-word">Start a league</div>
+        <p className="gate-help-text">
+          Setting up a new dynasty? Create it here — you'll be the commissioner,
+          able to add teams and run the weekly check-in.
+        </p>
         <form onSubmit={handleCreate}>
           <label className="field-label" htmlFor="league-name">
             League name
@@ -99,6 +103,10 @@ export default function LeagueGate({ onSelect }) {
         </form>
 
         <div className="divider-word">Join with a League ID</div>
+        <p className="gate-help-text">
+          Already in a dynasty someone else set up? Ask them for the League ID
+          and join as a player.
+        </p>
         <form onSubmit={handleJoin}>
           <label className="field-label" htmlFor="league-id">
             League ID (ask your commissioner)

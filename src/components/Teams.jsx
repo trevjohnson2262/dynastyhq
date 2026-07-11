@@ -65,6 +65,12 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
         <span className="panel__subtitle">{teams.length} in the league</span>
       </div>
       <div className="panel__body">
+        {!myTeam && teams.some((t) => !t.owner_id) && (
+          <p className="team-claim-nudge">
+            Pick your team below to get started — click "Claim this team" next
+            to the school you're playing as.
+          </p>
+        )}
         {teams.length === 0 ? (
           <p className="loading-text">
             No teams yet{isCommissioner ? ' — add the first one below.' : '.'}
