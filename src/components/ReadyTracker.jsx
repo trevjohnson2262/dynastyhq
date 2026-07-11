@@ -171,7 +171,7 @@ export default function ReadyTracker({ league, teams, currentUser, myTeam, isCom
                   )}
                   {isMine && (
                     <button className="btn btn--ghost btn--small" onClick={handleToggleMyTeam} disabled={busy}>
-                      {isReady ? 'Undo' : 'Stamp ready'}
+                      {isReady ? 'Undo' : 'Ready up'}
                     </button>
                   )}
                 </div>
