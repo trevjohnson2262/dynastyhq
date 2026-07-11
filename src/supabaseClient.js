@@ -172,6 +172,11 @@ export const db = {
       if (error) throw error;
       return data;
     },
+    async remove(id) {
+      const { error } = await supabase.from('teams').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    },
   },
 
   matchups: {

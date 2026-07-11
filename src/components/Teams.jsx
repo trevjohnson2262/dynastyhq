@@ -98,6 +98,22 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
     }
   }
 
+  async function handleRemove(team) {
+    const confirmed = window.confirm(
+      `Remove ${team.name}? This also removes any scheduled or played games for this team.`
+    );
+    if (!confirmed) return;
+    setBusy(true);
+    setError('');
+    try {
+      await db.teams.remove(team.id);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <section className="panel panel--tracker panel--full-width">
       <div className="panel__header">
@@ -207,13 +223,22 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
                           <span className="team-roster__owned-label">Unclaimed</span>
                         )}
                         {isCommissioner && (
-                          <button
-                            className="btn btn--ghost btn--small"
-                            onClick={() => startEdit(team)}
-                            disabled={busy}
-                          >
-                            Edit
-                          </button>
+                          <>
+                            <button
+                              className="btn btn--ghost btn--small"
+                              onClick={() => startEdit(team)}
+                              disabled={busy}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              className="btn btn--ghost btn--small"
+                              onClick={() => handleRemove(team)}
+                              disabled={busy}
+                            >
+                              Remove
+                            </button>
+                          </>
                         )}
                       </div>
                     </>

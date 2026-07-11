@@ -438,6 +438,17 @@ alter publication supabase_realtime add table news_items;
 alter publication supabase_realtime add table timeline_events;
 alter publication supabase_realtime add table announcements;
 
+-- Full replica identity so DELETE events carry the whole old row (not
+-- just the primary key) — required for realtime subscriptions that
+-- filter deletes by league_id (default identity only includes the PK,
+-- which silently drops filtered DELETE events).
+alter table teams replica identity full;
+alter table matchups replica identity full;
+alter table news_items replica identity full;
+alter table timeline_events replica identity full;
+alter table announcements replica identity full;
+alter table ready_status replica identity full;
+
 -- ============================================================
 -- HANDY INDEXES
 -- ============================================================
