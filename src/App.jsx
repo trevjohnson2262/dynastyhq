@@ -17,6 +17,7 @@ export default function App() {
   const { user, loading: authLoading } = useAuth();
   const [league, setLeague] = useState(null);
   const [teams, setTeams] = useState([]);
+  const [members, setMembers] = useState([]);
   const [role, setRole] = useState(null);
   const [teamsLoading, setTeamsLoading] = useState(false);
 
@@ -30,13 +31,19 @@ export default function App() {
     }
   }, []);
 
+  const loadMembers = useCallback(async (leagueId) => {
+    const data = await db.leagueMembers.list(leagueId);
+    setMembers(data);
+  }, []);
+
   useEffect(() => {
     if (!league) return;
     loadTeams(league.id);
+    loadMembers(league.id);
     auth.getRoleInLeague(league.id).then(setRole);
     const unsubscribe = realtime.subscribeToTeams(league.id, () => loadTeams(league.id));
     return unsubscribe;
-  }, [league, loadTeams]);
+  }, [league, loadTeams, loadMembers]);
 
   if (authLoading) {
     return (
@@ -72,6 +79,7 @@ export default function App() {
             <Teams
               league={league}
               teams={teams}
+              members={members}
               currentUser={user}
               myTeam={myTeam}
               isCommissioner={isCommissioner}

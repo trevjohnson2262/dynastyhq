@@ -5,7 +5,9 @@ export default function LeagueGate({ onSelect }) {
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newLeagueName, setNewLeagueName] = useState('');
+  const [createDisplayName, setCreateDisplayName] = useState('');
   const [joinId, setJoinId] = useState('');
+  const [joinDisplayName, setJoinDisplayName] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
@@ -31,7 +33,10 @@ export default function LeagueGate({ onSelect }) {
     setBusy(true);
     setError('');
     try {
-      const league = await db.leagues.create({ name: newLeagueName.trim() });
+      const league = await db.leagues.create({
+        name: newLeagueName.trim(),
+        displayName: createDisplayName.trim() || null,
+      });
       onSelect(league);
     } catch (err) {
       setError(err.message);
@@ -46,7 +51,7 @@ export default function LeagueGate({ onSelect }) {
     setBusy(true);
     setError('');
     try {
-      await db.leagues.joinById(joinId.trim());
+      await db.leagues.joinById(joinId.trim(), joinDisplayName.trim() || null);
       const league = await db.leagues.get(joinId.trim());
       onSelect(league);
     } catch (err) {
@@ -97,6 +102,18 @@ export default function LeagueGate({ onSelect }) {
             onChange={(e) => setNewLeagueName(e.target.value)}
             disabled={busy}
           />
+          <label className="field-label" htmlFor="create-display-name">
+            Your name (optional)
+          </label>
+          <input
+            id="create-display-name"
+            className="text-input"
+            type="text"
+            placeholder="Trevor"
+            value={createDisplayName}
+            onChange={(e) => setCreateDisplayName(e.target.value)}
+            disabled={busy}
+          />
           <button className="btn btn--field" type="submit" disabled={busy} style={{ width: '100%' }}>
             Create league
           </button>
@@ -118,6 +135,18 @@ export default function LeagueGate({ onSelect }) {
             placeholder="00000000-0000-0000-0000-000000000000"
             value={joinId}
             onChange={(e) => setJoinId(e.target.value)}
+            disabled={busy}
+          />
+          <label className="field-label" htmlFor="join-display-name">
+            Your name (optional)
+          </label>
+          <input
+            id="join-display-name"
+            className="text-input"
+            type="text"
+            placeholder="Trevor"
+            value={joinDisplayName}
+            onChange={(e) => setJoinDisplayName(e.target.value)}
             disabled={busy}
           />
           <button className="btn btn--ghost" type="submit" disabled={busy} style={{ width: '100%' }}>

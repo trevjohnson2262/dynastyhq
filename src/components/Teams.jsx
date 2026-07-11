@@ -21,7 +21,7 @@ function teamConference(team) {
   return team.conference ?? SCHOOL_LOOKUP.get(team.school)?.conference;
 }
 
-export default function Teams({ league, teams, currentUser, myTeam, isCommissioner }) {
+export default function Teams({ league, teams, members, currentUser, myTeam, isCommissioner }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
@@ -326,6 +326,30 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
                 </div>
               </form>
             )}
+          </div>
+        )}
+
+        {members && members.length > 0 && (
+          <div className="league-members">
+            <h3 className="league-members__title">League Members</h3>
+            <div className="league-members__list">
+              {members.map((member) => {
+                const ownedTeam = teams.find((t) => t.owner_id === member.user_id);
+                return (
+                  <div className="league-members__row" key={member.id}>
+                    <span className="league-members__name">
+                      {member.display_name || 'Unnamed player'}
+                    </span>
+                    <span className="league-members__role">
+                      {member.role === 'commissioner' ? 'Commissioner' : 'Player'}
+                    </span>
+                    <span className="league-members__team">
+                      {ownedTeam ? ownedTeam.name : 'No team claimed'}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>

@@ -438,6 +438,51 @@ a {
   margin-left: 10px;
 }
 
+.league-members {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(154, 163, 181, 0.2);
+}
+
+.league-members__title {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  margin: 0 0 10px;
+}
+
+.league-members__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.league-members__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  padding: 4px 0;
+}
+
+.league-members__name {
+  font-weight: 600;
+}
+
+.league-members__role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.league-members__team {
+  color: var(--chalk-dim);
+  margin-left: auto;
+}
+
 .standings-table {
   width: 100%;
   border-collapse: collapse;

@@ -86,7 +86,7 @@ export const db = {
       return data;
     },
 
-    async create({ name, season = 1 }) {
+    async create({ name, season = 1, displayName = null }) {
       const user = await auth.getCurrentUser();
       if (!user) throw new Error('Must be signed in to create a league');
       const { data: league, error } = await supabase
@@ -97,7 +97,12 @@ export const db = {
       if (error) throw error;
       const { error: memberErr } = await supabase
         .from('league_members')
-        .insert({ league_id: league.id, user_id: user.id, role: 'commissioner' });
+        .insert({
+          league_id: league.id,
+          user_id: user.id,
+          role: 'commissioner',
+          display_name: displayName,
+        });
       if (memberErr) throw memberErr;
       return league;
     },
@@ -378,6 +383,18 @@ export const db = {
       const { error } = await supabase.from('news_items').delete().eq('id', id);
       if (error) throw error;
       return true;
+    },
+  },
+
+  leagueMembers: {
+    async list(leagueId) {
+      const { data, error } = await supabase
+        .from('league_members')
+        .select('*')
+        .eq('league_id', leagueId)
+        .order('joined_at', { ascending: true });
+      if (error) throw error;
+      return data;
     },
   },
 
