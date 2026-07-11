@@ -162,6 +162,16 @@ export const db = {
       if (error) throw error;
       return data;
     },
+    async update(id, patch) {
+      const { data, error } = await supabase
+        .from('teams')
+        .update(patch)
+        .eq('id', id)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
   },
 
   matchups: {

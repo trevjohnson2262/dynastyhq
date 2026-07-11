@@ -396,6 +396,25 @@ a {
   border-radius: var(--radius);
 }
 
+.team-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.team-edit-form .roster-select {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--chalk-dim);
+  color: var(--white);
+}
+
+.team-edit-form .text-input {
+  width: 130px;
+  margin-bottom: 0;
+}
+
 .team-roster__name {
   font-family: var(--font-display);
   text-transform: uppercase;

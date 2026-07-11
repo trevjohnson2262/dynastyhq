@@ -48,6 +48,7 @@ create table teams (
   wins int not null default 0,
   losses int not null default 0,
   school text,
+  conference text,
   created_at timestamptz not null default now(),
   unique (league_id, school)
 );
