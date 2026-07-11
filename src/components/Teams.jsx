@@ -1,24 +1,43 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { db } from '../supabaseClient';
+import cfbSchools from '../../data/cfb_schools.json';
+
+const SCHOOLS_BY_CONFERENCE = (() => {
+  const groups = new Map();
+  [...cfbSchools]
+    .sort((a, b) => a.school.localeCompare(b.school))
+    .forEach((s) => {
+      if (!groups.has(s.conference)) groups.set(s.conference, []);
+      groups.get(s.conference).push(s);
+    });
+  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
+})();
+
+const SCHOOL_LOOKUP = new Map(cfbSchools.map((s) => [s.school, s]));
 
 export default function Teams({ league, teams, currentUser, myTeam, isCommissioner }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
-  const [form, setForm] = useState({ name: '', abbreviation: '' });
+  const [form, setForm] = useState({ school: '', abbreviation: '' });
+
+  const usedSchools = useMemo(() => new Set(teams.map((t) => t.school).filter(Boolean)), [teams]);
 
   async function handleAdd(e) {
     e.preventDefault();
-    if (!form.name.trim()) return;
+    if (!form.school) return;
+    const picked = SCHOOL_LOOKUP.get(form.school);
+    if (!picked) return;
     setBusy(true);
     setError('');
     try {
       await db.teams.create({
         league_id: league.id,
-        name: form.name.trim(),
+        school: picked.school,
+        name: `${picked.school} ${picked.nickname}`,
         abbreviation: form.abbreviation.trim() || null,
       });
-      setForm({ name: '', abbreviation: '' });
+      setForm({ school: '', abbreviation: '' });
       setShowAddForm(false);
     } catch (err) {
       setError(err.message);
@@ -57,6 +76,11 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
                 <div>
                   <span className="team-roster__name">{team.name}</span>
                   {team.abbreviation && <span className="team-roster__abbr">{team.abbreviation}</span>}
+                  {team.school && SCHOOL_LOOKUP.get(team.school) && (
+                    <span className="team-roster__conference">
+                      {SCHOOL_LOOKUP.get(team.school).conference}
+                    </span>
+                  )}
                 </div>
                 <div className="team-roster__status">
                   {team.owner_id === currentUser.id ? (
@@ -90,15 +114,25 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
               </button>
             ) : (
               <form onSubmit={handleAdd} className="team-add-form">
-                <label className="field-label">Team name</label>
-                <input
-                  className="text-input"
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Sunday Night Ballers"
+                <label className="field-label">School</label>
+                <select
+                  className="roster-select"
+                  value={form.school}
+                  onChange={(e) => setForm({ ...form, school: e.target.value })}
                   required
-                />
+                >
+                  <option value="">Select a school</option>
+                  {SCHOOLS_BY_CONFERENCE.map(([conference, schools]) => (
+                    <optgroup key={conference} label={conference}>
+                      {schools.map((s) => (
+                        <option key={s.school} value={s.school} disabled={usedSchools.has(s.school)}>
+                          {s.school} {s.nickname}
+                          {usedSchools.has(s.school) ? ' (taken)' : ''}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
                 <label className="field-label">Abbreviation (optional)</label>
                 <input
                   className="text-input"

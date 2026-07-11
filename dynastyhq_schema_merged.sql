@@ -47,7 +47,9 @@ create table teams (
   logo_url text,
   wins int not null default 0,
   losses int not null default 0,
-  created_at timestamptz not null default now()
+  school text,
+  created_at timestamptz not null default now(),
+  unique (league_id, school)
 );
 
 -- ------------------------------------------------------------

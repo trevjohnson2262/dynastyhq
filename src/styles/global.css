@@ -388,6 +388,15 @@ a {
   margin-left: 8px;
 }
 
+.team-roster__conference {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-left: 10px;
+}
+
 .team-roster__owned-label {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -401,6 +410,14 @@ a {
   flex-direction: column;
   max-width: 320px;
   margin-top: 8px;
+}
+
+.team-add-form .roster-select {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--chalk-dim);
+  color: var(--white);
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .news-list {
