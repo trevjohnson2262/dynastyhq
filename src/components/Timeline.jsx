@@ -1,7 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { db, realtime } from '../supabaseClient';
 
-const EVENT_TYPES = ['General', 'Trade', 'Injury', 'Milestone'];
+const EVENT_TYPES = [
+  'General',
+  'Trade',
+  'Injury',
+  'Milestone',
+  'Coaching Change',
+  'Playoff/Bowl',
+];
 
 export default function Timeline({ league, isCommissioner }) {
   const [events, setEvents] = useState([]);

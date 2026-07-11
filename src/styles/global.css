@@ -602,7 +602,7 @@ a {
 
 .recruit-add-form {
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr 0.6fr auto;
+  grid-template-columns: 1.2fr 0.7fr 0.5fr 0.6fr auto;
   gap: 8px;
   align-items: end;
   margin-top: 10px;
@@ -612,6 +612,14 @@ a {
   .recruit-add-form {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.recruit-season-group {
+  margin-bottom: 18px;
+}
+
+.recruit-season-group:last-child {
+  margin-bottom: 0;
 }
 
 .timeline-list {

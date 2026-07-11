@@ -1,6 +1,23 @@
-import { auth } from '../supabaseClient';
+import { useState } from 'react';
+import { auth, db } from '../supabaseClient';
 
-export default function LeagueShell({ league, onLeaveLeague, children }) {
+export default function LeagueShell({ league, isCommissioner, onLeagueUpdate, onLeaveLeague, children }) {
+  const [busy, setBusy] = useState(false);
+
+  async function handleStartNewSeason() {
+    const confirmed = window.confirm(
+      `Start Season ${league.season + 1}? This resets the week counter back to 1.`
+    );
+    if (!confirmed) return;
+    setBusy(true);
+    try {
+      const updated = await db.leagues.startNewSeason(league.id, league.season);
+      onLeagueUpdate(updated);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <div className="app-shell">
       <header className="scoreboard-header">
@@ -15,6 +32,11 @@ export default function LeagueShell({ league, onLeaveLeague, children }) {
           </div>
         </div>
         <div className="scoreboard-header__actions">
+          {isCommissioner && (
+            <button className="btn btn--ghost btn--small" onClick={handleStartNewSeason} disabled={busy}>
+              Start new season
+            </button>
+          )}
           <button className="btn btn--ghost btn--small" onClick={onLeaveLeague}>
             Switch league
           </button>

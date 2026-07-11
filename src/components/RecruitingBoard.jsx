@@ -16,7 +16,12 @@ export default function RecruitingBoard({ league, teams, isCommissioner }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
-  const [form, setForm] = useState({ name: '', position: '', stars: '3' });
+  const [form, setForm] = useState({
+    name: '',
+    position: '',
+    stars: '3',
+    season: league.season,
+  });
   const [committingId, setCommittingId] = useState(null);
   const [commitTeamId, setCommitTeamId] = useState('');
 
@@ -25,6 +30,16 @@ export default function RecruitingBoard({ league, teams, isCommissioner }) {
     teams.forEach((t) => (map[t.id] = t.name));
     return map;
   }, [teams]);
+
+  const bySeason = useMemo(() => {
+    const groups = new Map();
+    recruits.forEach((r) => {
+      const key = r.season ?? 'Unspecified';
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(r);
+    });
+    return [...groups.entries()];
+  }, [recruits]);
 
   const load = useCallback(async () => {
     try {
@@ -51,8 +66,9 @@ export default function RecruitingBoard({ league, teams, isCommissioner }) {
         name: form.name.trim(),
         position: form.position.trim() || null,
         stars: Number(form.stars),
+        season: form.season ? Number(form.season) : null,
       });
-      setForm({ name: '', position: '', stars: '3' });
+      setForm({ name: '', position: '', stars: '3', season: league.season });
       setShowAddForm(false);
       await load();
     } catch (err) {
@@ -107,97 +123,104 @@ export default function RecruitingBoard({ league, teams, isCommissioner }) {
   return (
     <section className="panel panel--schedule panel--full-width">
       <div className="panel__header">
-        <h2 className="panel__title">Recruiting Board</h2>
-        <span className="panel__subtitle">{recruits.length} in the class</span>
+        <h2 className="panel__title">Recruiting Classes</h2>
+        <span className="panel__subtitle">{recruits.length} signed</span>
       </div>
       <div className="panel__body">
         {loading ? (
           <p className="loading-text" style={{ color: '#6b6350' }}>
-            Loading recruits…
+            Loading recruiting classes…
           </p>
         ) : recruits.length === 0 ? (
           <p className="schedule-empty">
-            No recruits yet{isCommissioner ? ' — add the first one below.' : '.'}
+            No recruits logged yet{isCommissioner ? ' — add your first signee below.' : '.'}
           </p>
         ) : (
-          <div className="recruit-list">
-            {recruits.map((r) => (
-              <div className="recruit-row" key={r.id}>
-                <div>
-                  <span className="recruit-row__name">{r.name}</span>
-                  {r.position && <span className="recruit-row__position">{r.position}</span>}
-                  <Stars count={r.stars || 0} />
-                </div>
-                <div className="recruit-row__status">
-                  {r.status === 'committed' ? (
-                    <span className="recruit-row__committed">
-                      Committed to {teamName[r.committed_team_id] || 'Unknown'}
-                    </span>
-                  ) : (
-                    <span className="recruit-row__uncommitted">Uncommitted</span>
-                  )}
-
-                  {isCommissioner && (
-                    <div className="recruit-row__actions">
+          bySeason.map(([season, group]) => (
+            <div key={season} className="recruit-season-group">
+              <div className="schedule-week__label">
+                {season === 'Unspecified' ? 'Season unspecified' : `Season ${season}`}
+              </div>
+              <div className="recruit-list">
+                {group.map((r) => (
+                  <div className="recruit-row" key={r.id}>
+                    <div>
+                      <span className="recruit-row__name">{r.name}</span>
+                      {r.position && <span className="recruit-row__position">{r.position}</span>}
+                      <Stars count={r.stars || 0} />
+                    </div>
+                    <div className="recruit-row__status">
                       {r.status === 'committed' ? (
-                        <button
-                          className="btn btn--ghost btn--small"
-                          onClick={() => handleUncommit(r.id)}
-                          disabled={busy}
-                        >
-                          Uncommit
-                        </button>
-                      ) : committingId === r.id ? (
-                        <>
-                          <select
-                            className="roster-select"
-                            value={commitTeamId}
-                            onChange={(e) => setCommitTeamId(e.target.value)}
-                          >
-                            <option value="">Select team</option>
-                            {teams.map((t) => (
-                              <option key={t.id} value={t.id}>
-                                {t.name}
-                              </option>
-                            ))}
-                          </select>
-                          <button
-                            className="btn btn--field btn--small"
-                            onClick={() => handleCommit(r.id)}
-                            disabled={busy || !commitTeamId}
-                          >
-                            Confirm
-                          </button>
+                        <span className="recruit-row__committed">
+                          Signed with {teamName[r.committed_team_id] || 'Unknown'}
+                        </span>
+                      ) : (
+                        <span className="recruit-row__uncommitted">Uncommitted</span>
+                      )}
+
+                      {isCommissioner && (
+                        <div className="recruit-row__actions">
+                          {r.status === 'committed' ? (
+                            <button
+                              className="btn btn--ghost btn--small"
+                              onClick={() => handleUncommit(r.id)}
+                              disabled={busy}
+                            >
+                              Uncommit
+                            </button>
+                          ) : committingId === r.id ? (
+                            <>
+                              <select
+                                className="roster-select"
+                                value={commitTeamId}
+                                onChange={(e) => setCommitTeamId(e.target.value)}
+                              >
+                                <option value="">Select team</option>
+                                {teams.map((t) => (
+                                  <option key={t.id} value={t.id}>
+                                    {t.name}
+                                  </option>
+                                ))}
+                              </select>
+                              <button
+                                className="btn btn--field btn--small"
+                                onClick={() => handleCommit(r.id)}
+                                disabled={busy || !commitTeamId}
+                              >
+                                Confirm
+                              </button>
+                              <button
+                                className="btn btn--ghost btn--small"
+                                type="button"
+                                onClick={() => setCommittingId(null)}
+                              >
+                                Cancel
+                              </button>
+                            </>
+                          ) : (
+                            <button
+                              className="btn btn--field btn--small"
+                              onClick={() => setCommittingId(r.id)}
+                              disabled={busy}
+                            >
+                              Sign to team
+                            </button>
+                          )}
                           <button
                             className="btn btn--ghost btn--small"
-                            type="button"
-                            onClick={() => setCommittingId(null)}
+                            onClick={() => handleRemove(r.id)}
+                            disabled={busy}
                           >
-                            Cancel
+                            Remove
                           </button>
-                        </>
-                      ) : (
-                        <button
-                          className="btn btn--field btn--small"
-                          onClick={() => setCommittingId(r.id)}
-                          disabled={busy}
-                        >
-                          Commit
-                        </button>
+                        </div>
                       )}
-                      <button
-                        className="btn btn--ghost btn--small"
-                        onClick={() => handleRemove(r.id)}
-                        disabled={busy}
-                      >
-                        Remove
-                      </button>
                     </div>
-                  )}
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))
         )}
 
         {error && <p className="auth-status auth-status--error">{error}</p>}
@@ -249,6 +272,18 @@ export default function RecruitingBoard({ league, teams, isCommissioner }) {
                       </option>
                     ))}
                   </select>
+                </div>
+                <div>
+                  <label className="field-label" style={{ color: '#6b6350' }}>
+                    Season
+                  </label>
+                  <input
+                    className="text-input schedule-input"
+                    type="number"
+                    min="1"
+                    value={form.season}
+                    onChange={(e) => setForm({ ...form, season: e.target.value })}
+                  />
                 </div>
                 <button className="btn btn--field btn--small" type="submit" disabled={busy}>
                   Add recruit

@@ -121,6 +121,7 @@ create table recruits (
   stars int check (stars between 1 and 5),
   committed_team_id uuid references teams(id) on delete set null,
   status text default 'uncommitted',
+  season int,
   metadata jsonb default '{}'::jsonb,
   created_at timestamptz not null default now()
 );

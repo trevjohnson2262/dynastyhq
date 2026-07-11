@@ -57,7 +57,12 @@ export default function App() {
   const isCommissioner = role === 'commissioner';
 
   return (
-    <LeagueShell league={league} onLeaveLeague={() => setLeague(null)}>
+    <LeagueShell
+      league={league}
+      isCommissioner={isCommissioner}
+      onLeagueUpdate={setLeague}
+      onLeaveLeague={() => setLeague(null)}
+    >
       <div className="main-grid">
         {teamsLoading ? (
           <p className="loading-text">Loading teams…</p>

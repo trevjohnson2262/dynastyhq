@@ -124,6 +124,17 @@ export const db = {
       if (error) throw error;
       return data;
     },
+
+    async startNewSeason(id, currentSeason) {
+      const { data, error } = await supabase
+        .from('leagues')
+        .update({ season: currentSeason + 1, current_week: 1 })
+        .eq('id', id)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
   },
 
   teams: {
@@ -213,15 +224,16 @@ export const db = {
         .from('recruits')
         .select('*')
         .eq('league_id', leagueId)
+        .order('season', { ascending: false })
         .order('stars', { ascending: false });
       if (error) throw error;
       return data;
     },
 
-    async create({ league_id, name, position, stars }) {
+    async create({ league_id, name, position, stars, season }) {
       const { data, error } = await supabase
         .from('recruits')
-        .insert({ league_id, name, position, stars })
+        .insert({ league_id, name, position, stars, season })
         .select()
         .single();
       if (error) throw error;
