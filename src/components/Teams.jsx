@@ -98,6 +98,22 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
     }
   }
 
+  async function handleLeave(team) {
+    const confirmed = window.confirm(
+      `Leave ${team.name}? It will become unclaimed for anyone to pick up.`
+    );
+    if (!confirmed) return;
+    setBusy(true);
+    setError('');
+    try {
+      await db.teams.release(team.id);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function handleRemove(team) {
     const confirmed = window.confirm(
       `Remove ${team.name}? This also removes any scheduled or played games for this team.`
@@ -208,7 +224,16 @@ export default function Teams({ league, teams, currentUser, myTeam, isCommission
                       </div>
                       <div className="team-roster__status">
                         {team.owner_id === currentUser.id ? (
-                          <span className="team-roster__owned-label">Your team</span>
+                          <>
+                            <span className="team-roster__owned-label">Your team</span>
+                            <button
+                              className="btn btn--ghost btn--small"
+                              onClick={() => handleLeave(team)}
+                              disabled={busy}
+                            >
+                              Leave team
+                            </button>
+                          </>
                         ) : team.owner_id ? (
                           <span className="team-roster__owned-label">Claimed</span>
                         ) : !myTeam ? (

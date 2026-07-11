@@ -162,6 +162,16 @@ export const db = {
       if (error) throw error;
       return data;
     },
+    async release(teamId) {
+      const { data, error } = await supabase
+        .from('teams')
+        .update({ owner_id: null })
+        .eq('id', teamId)
+        .select()
+        .single();
+      if (error) throw error;
+      return data;
+    },
     async update(id, patch) {
       const { data, error } = await supabase
         .from('teams')
